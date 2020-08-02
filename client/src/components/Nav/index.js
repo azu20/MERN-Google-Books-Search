@@ -1,10 +1,14 @@
 import React from "react";
+// import MyList from "../../pages/MyList";
 
 function Nav() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <a className="navbar-brand" href="/">
-        React Reading List
+        Homepage
+      </a>
+      <a className="navbar-brand" href="/" >
+        My Reading List
       </a>
     </nav>
   );

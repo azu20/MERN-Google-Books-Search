@@ -21,7 +21,7 @@ function Detail(props) {
         <Row>
           <Col size="md-12">
             <Jumbotron>
-              <h1>
+              <h1 className="bookInfo">
                 {book.title} by {book.author}
               </h1>
             </Jumbotron>
@@ -30,9 +30,9 @@ function Detail(props) {
         <Row>
           <Col size="md-10 md-offset-1">
             <article>
-              <h1>Synopsis</h1>
+              <h1 className="details">Synopsis</h1>
               <p>
-                {book.synopsis}
+                {book.synopsis} This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
               </p>
             </article>
           </Col>
