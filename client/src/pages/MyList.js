@@ -5,7 +5,7 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-import { Detail } from "../components/Detail";
+import { DetailRow, DetailBody, DetailImage } from "../components/Detail/index.js";
 // import { Input, TextArea, FormBtn } from "../components/Form";
 
 function MyList() {
@@ -46,17 +46,23 @@ return (
  {books.length ? (
   <List>
   {books.map(book => (
-    <ListItem key={book._id}>
-      
-      <Link to={"/books/" + book._id}>
-        <Detail>
-          <h5> {book.title}</h5>
-          <h6> {book.author}</h6>
-          <p> {book.synopsis} This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </Detail>
-        <DeleteBtn onClick={() => deleteBook(book._id)} />
-      </Link>   
-    </ListItem>
+     <ListItem key={book._id}>
+                  
+     <Link to={"/books/" + book._id}>
+        {/* <DetailRow> 
+         <DetailImage>
+         </DetailImage>
+         <DetailBody>
+         <h5> {book.title} </h5>
+         <h6> {book.author} </h6>
+         <p> {book.synopsis} </p>
+         </DetailBody>
+        </DetailRow>  */}
+       <DeleteBtn onClick={() => deleteBook(book._id)} />
+     </Link>
+     
+    
+   </ListItem>
   ))}
 </List>
 

@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
-import DeleteBtn from "../components/DeleteBtn";
+// import DeleteBtn from "../components/DeleteBtn";
 import SaveBtn from "../components/SaveBtn";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
-import { Detail } from "../components/Detail";
-
+import { Input, FormBtn } from "../components/Form";
+import { DetailBody, DetailImage } from "../components/Detail/";
+// import { Button, View, Text } from 'react-native';
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createStackNavigator } from '@react-navigation/stack';
 
 function Books() {
   // Setting our component's initial state
@@ -36,9 +38,11 @@ function Books() {
       .catch(err => console.log(err));
   }
 
-  function saveBook(id) {
-    API.saveBook(id)
-      .then(res => loadBooks())
+  function saveBook(book) {
+    API.saveBook(book)
+      .then(res => loadBooks()
+      // navigation.navigate('MyList')
+      )
       .catch(err => console.log(err));
   }
 
@@ -53,15 +57,27 @@ function Books() {
   // Then reload books from the database
   function handleFormSubmit(event) {
     event.preventDefault();
-    // if (formObject.title && formObject.author) {
-      API.searchBooks() 
-      // API.searchBooks({
-      //   title: formObject.title,
-      //   author: formObject.author,
-      //   synopsis: formObject.synopsis
-      // })
-        .then(res => loadBooks())
-        .catch(err => console.log(err));
+    API.searchBooks(formObject.title)
+      .then(res => {
+       
+        let books = [{}];  
+        for(let book of res.data.items){
+            let volInfo = book.volumeInfo;
+            console.log(volInfo);
+            books.push(
+              {
+                title: volInfo.title,
+                author:  volInfo.hasOwnProperty("authors") ? volInfo.authors.join(", ") :  "unknown",
+                synopsis: volInfo.description,
+                image: volInfo.hasOwnProperty("imageLinks") ? volInfo.imageLinks.smallThumbnail : ""
+              });
+        };
+
+        setBooks(books);
+      
+      }
+         )
+      .catch(err => console.log(err));
     // }
   };
 
@@ -79,16 +95,6 @@ function Books() {
               name="title"
               placeholder="Title (required)"
             />
-            {/* <Input
-                onChange={handleInputChange}
-                name="author"
-                placeholder="Author (required)"
-              />
-              <TextArea
-                onChange={handleInputChange}
-                name="synopsis"
-                placeholder="Synopsis (Optional)"
-              /> */}
             <FormBtn
               disabled={!(formObject.title)}
               onClick={handleFormSubmit}
@@ -103,54 +109,42 @@ function Books() {
           {books.length ? (
 
             <List>
-
-              {books.map(book => (
-                <ListItem key={book._id}>
-                  
-                  <Link to={"/books/" + book._id}>
-                    <Detail>
-                      <h5> {book.title} </h5>
-                      <h6> {book.author} </h6>
-                      <p> {book.synopsis} This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      {/* <strong>
-                        {book.title} by {book.author}
-                      </strong> */}
-                    </Detail>
-                    <SaveBtn onClick={() => saveBook(book._id)} />
-                    <DeleteBtn onClick={() => deleteBook(book._id)} />
-                  </Link>
-                  
-                 
-                </ListItem>
-              ))}
+              {
+                books.map(book => (
+                  <ListItem key={book._id}>
+                    <Link to={"/books/" + book._id}>
+                      <div className="card mb-3" >
+                        <div className="row no-gutters">
+                          <div className="col-md-4">
+                            <DetailImage>
+                              {book.image}
+                            </DetailImage>
+                          </div>
+                          <div className="col-md-8">
+                            <DetailBody>
+                              <h5> {book.title} </h5>
+                              <h6> {book.author} </h6>
+                              <p> {book.synopsis} </p>
+                            </DetailBody>
+                          </div>
+                        </div>
+                      </div>
+                    
+                    </Link>
+                    <div>
+                    <SaveBtn onClick={() => saveBook(book)} />
+                    </div>
+                  </ListItem>
+                )
+                )
+              }
             </List>
           ) : (
               <h3>No Results to Display</h3>
             )}
 
         </Col>
-        {/* <Col size="md-6 sm-12">
-            <Jumbotron>
-              <h1>Books On My List</h1>
-            </Jumbotron>
-            {books.length ? (
-              <List>
-                {books.map(book => (
-                  <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
-                      <strong>
-                        {book.title} by {book.author}
-                      </strong>
-                    </Link>
-                    <SaveBtn onClick={() => saveBook(book._id)} />
-                    <DeleteBtn onClick={() => deleteBook(book._id)} />
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
-          </Col> */}
+
       </Row>
     </Container>
   );

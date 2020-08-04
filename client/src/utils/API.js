@@ -1,10 +1,10 @@
 import axios from "axios";
-const BASEURL = "https://www.googleapis.com/books/v1/volumes?q=quilting";
+const BASEURL = "https://www.googleapis.com/books/v1/volumes?q=";
 
 export default {
-  searchBooks: async function() {
+  searchBooks: async function(term ) {
     let response = 
-    await axios.get(BASEURL)
+    await axios.get(BASEURL + term)
     .then(x => x)
     .catch(err => console.log("error: ", err));
   console.log("API.search() called", response); 
