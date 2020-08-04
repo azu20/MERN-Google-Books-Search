@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import DeleteBtn from "../components/DeleteBtn";
 import SaveBtn from "../components/SaveBtn";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
@@ -8,9 +7,7 @@ import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
 import { DetailBody, DetailImage } from "../components/Detail/";
-// import { Button, View, Text } from 'react-native';
-// import { NavigationContainer } from '@react-navigation/native';
-// import { createStackNavigator } from '@react-navigation/stack';
+
 
 function Books() {
   // Setting our component's initial state
@@ -32,11 +29,11 @@ function Books() {
   };
 
   // Deletes a book from the database with a given id, then reloads books from the db
-  function deleteBook(id) {
-    API.deleteBook(id)
-      .then(res => loadBooks())
-      .catch(err => console.log(err));
-  }
+  // function deleteBook(id) {
+  //   API.deleteBook(id)
+  //     .then(res => loadBooks())
+  //     .catch(err => console.log(err));
+  // }
 
   function saveBook(book) {
     API.saveBook(book)

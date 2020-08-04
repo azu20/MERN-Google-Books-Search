@@ -1,5 +1,5 @@
 import React from "react";
-import MyList from "../../pages/MyList";
+
 
 function Nav() {
   return (
