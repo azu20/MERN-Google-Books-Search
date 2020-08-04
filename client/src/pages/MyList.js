@@ -5,7 +5,7 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-import { DetailRow, DetailBody, DetailImage } from "../components/Detail/index.js";
+// import { DetailRow, DetailBody, DetailImage } from "../components/Detail/index.js";
 // import { Input, TextArea, FormBtn } from "../components/Form";
 
 function MyList() {

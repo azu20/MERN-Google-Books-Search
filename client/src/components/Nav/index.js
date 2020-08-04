@@ -1,5 +1,5 @@
 import React from "react";
-// import MyList from "../../pages/MyList";
+import MyList from "../../pages/MyList";
 
 function Nav() {
   return (
@@ -7,7 +7,7 @@ function Nav() {
       <a className="navbar-brand" href="/">
         Homepage
       </a>
-      <a className="navbar-brand" href="/" >
+      <a className="navbar-brand" href="/mylist" >
         My Reading List
       </a>
     </nav>

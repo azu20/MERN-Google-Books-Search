@@ -18,8 +18,8 @@ function App() {
           <Route exact path="/books/:id">
             <Detail />
           </Route>
-          <Route exact path="/books">
-          <MyList  />
+          <Route exact path="/mylist">
+            <MyList />
           </Route>
           <Route>
             <NoMatch />
