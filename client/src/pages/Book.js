@@ -84,7 +84,8 @@ function Books() {
       <Row>
         <Col size="md-12">
           <Jumbotron>
-            <h1>What to read..🤔</h1>
+            <h1>What to read..<span role="img" aria-label="thinking-emoji">🤔</span> 
+            </h1>
           </Jumbotron>
           <form>
             <Input
