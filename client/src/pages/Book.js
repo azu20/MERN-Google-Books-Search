@@ -38,7 +38,7 @@ function Books() {
   function saveBook(book) {
     API.saveBook(book)
       .then(res => loadBooks()
-      // navigation.navigate('MyList')
+        // navigation.navigate('MyList')
       )
       .catch(err => console.log(err));
   }
@@ -56,94 +56,91 @@ function Books() {
     event.preventDefault();
     API.searchBooks(formObject.title)
       .then(res => {
-       
-        let books = [{}];  
-        for(let book of res.data.items){
-            let volInfo = book.volumeInfo;
-            console.log(volInfo);
-            books.push(
-              {
-                title: volInfo.title,
-                author:  volInfo.hasOwnProperty("authors") ? volInfo.authors.join(", ") :  "unknown",
-                synopsis: volInfo.description,
-                image: volInfo.hasOwnProperty("imageLinks") ? volInfo.imageLinks.smallThumbnail : ""
-              });
+
+        let books = [{}];
+        for (let book of res.data.items) {
+          let volInfo = book.volumeInfo;
+          console.log(volInfo);
+          books.push(
+            {
+              title: volInfo.title,
+              author: volInfo.hasOwnProperty("authors") ? volInfo.authors.join(", ") : "unknown",
+              synopsis: volInfo.description,
+              image: volInfo.hasOwnProperty("imageLinks") ? volInfo.imageLinks.smallThumbnail : ""
+            });
         };
 
         setBooks(books);
-      
+
       }
-         )
+      )
       .catch(err => console.log(err));
     // }
   };
 
-
   return (
     <Container fluid>
-      <Row>
-        <Col size="md-12">
-          <Jumbotron>
-            <h1>What to read..<span role="img" aria-label="thinking-emoji">🤔</span> 
-            </h1>
-          </Jumbotron>
-          <form>
-            <Input
-              onChange={handleInputChange}
-              name="title"
-              placeholder="Title (required)"
-            />
-            <FormBtn
-              disabled={!(formObject.title)}
-              onClick={handleFormSubmit}
-            >
-              Search Book
-              </FormBtn>
-            <hr></hr>
-            <br></br>
-          </form>
+      <Jumbotron>
+        <h1 style={{ fontSize: "72px" }} >What to read..<span role="img" aria-label="thinking-emoji">🤔</span>
+        </h1>
+      </Jumbotron>
+      <div>
+        <form className="text-center">
+          <Input
+            onChange={handleInputChange}
+            name="title"
+            placeholder="Title (required)"
+            style={{ fontSize: "28px", fontWeight: "bold" }}
+          />
+          <FormBtn
+            disabled={!(formObject.title)}
+            onClick={handleFormSubmit} 
+          >
+            Search Book
+          </FormBtn>
           <hr></hr>
           <br></br>
-          {books.length ? (
+        </form>
+      </div>
+      <hr></hr>
+      <br></br>
+      {books.length ? (
+        <List>
+          {
+            books.map(book => (
 
-            <List>
-              {
-                books.map(book => (
-                  <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
-                      <div className="card mb-3" >
-                        <div className="row no-gutters">
-                          <div className="col-md-4">
-                            <DetailImage>
-                              {book.image}
-                            </DetailImage>
-                          </div>
-                          <div className="col-md-8">
-                            <DetailBody>
-                              <h5> {book.title} </h5>
-                              <h6> {book.author} </h6>
-                              <p> {book.synopsis} </p>
-                            </DetailBody>
-                          </div>
-                        </div>
-                      </div>
-                    
-                    </Link>
-                    <div>
-                    <SaveBtn onClick={() => saveBook(book)} />
+              <ListItem key={book._id}>
+                <div className="card mb-6" >
+                  <div className="row no-gutters">
+                    <div className="col-md-6 text-center" style={{ margin: "auto" }}>
+                      <DetailBody>
+                      <h1> {book.title} </h1>
+                      <br></br>
+                        <h2>By: {book.author} </h2>
+                        <br></br>
+                        <Link to={"/books/" + book._id}>
+                        <h2>Click for Book Details</h2>
+                        </Link>
+                      </DetailBody>
+                        <br></br>
+                        <SaveBtn onClick={() => saveBook(book)} />
                     </div>
-                  </ListItem>
-                )
-                )
-              }
-            </List>
-          ) : (
-              <h3>No Results to Display</h3>
-            )}
-
-        </Col>
-
-      </Row>
+                    <div className="col-md-6 text-center" style={{ margin: "auto", padding: "1.5rem"}}>
+                      <DetailImage>
+                        {book.image}
+                      </DetailImage>
+                    </div>
+                    </div>
+                  </div>
+              </ListItem>
+            )
+            )
+          }
+        </List>
+      ) : (
+          <h3>No Results to Display</h3>
+        )}
+        
     </Container>
   );
 }

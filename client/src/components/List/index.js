@@ -5,12 +5,12 @@ import "./style.css";
 
 export function List({ children }) {
   return (
-    <div className="list-overflow-container">
+    <div className="list-overflow">
       <ul className="list-group">{children}</ul>
     </div>
   );
 }
 
 export function ListItem({ children }) {
-  return <li className="list-group-item">{children}</li>;
+  return <li className="list-group-item" style={{ margin: "auto", flexWrap: "wrap", width: "58rem" }}>{children}</li>;
 }

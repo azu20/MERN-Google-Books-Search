@@ -3,7 +3,7 @@ import React from "react";
  
 export function DetailImage({children} ) {
     return (       
-            <img src={children} className="card-img" alt="🤓" />  
+            <img src={children} className="book-img" style={{ width: "18rem" }} alt="🤓" />  
     );
   }
 
