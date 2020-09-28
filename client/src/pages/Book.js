@@ -126,7 +126,7 @@ function Books() {
                         <br></br>
                         <SaveBtn onClick={() => saveBook(book)} />
                     </div>
-                    <div className="col-md-6 text-center" style={{ margin: "auto", padding: "1.5rem"}}>
+                    <div className="col-md-6 text-center" style={{ margin: "auto", padding: "1rem"}}>
                       <DetailImage>
                         {book.image}
                       </DetailImage>

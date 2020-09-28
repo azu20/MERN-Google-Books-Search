@@ -51,14 +51,12 @@ function MyList() {
               {
                 books.map(book => (
                   <ListItem key={book._id} style={{ backgroundColor: "#E2B091" }}>
-                    <div className="card mb-3" style={{ backgroundColor: "#E2B091" }}>
+                    <div className="card mb-6" style={{ backgroundColor: "#E2B091" }}>
                       <div className="row no-gutters" style={{ backgroundColor: "#E2B091" }}>
-                        <div className="col-md-4">
-                          <DetailImage>
-                            {book.image}
-                          </DetailImage>
-                        </div>
-                        <div className="col-md-8">
+                        <div className="col-md-6 text-center">
+                       
+                        
+                        {/* <div className="col-md-8"> */}
                           <DetailBody>
                             <h1> {book.title} </h1>
                             <br></br>
@@ -74,9 +72,15 @@ function MyList() {
                         style={{ backgroundColor: "#32485C", color: "white", fontWeight: "bold", fontSize: "28px", display: "flex", justifyContent: "center", alignItems: "center", margin: "auto"  }} 
                        />
                         </div>
+                        <div div className="col-md-6 text-center" style={{ margin: "auto", padding: "1rem"}}>
+                        <DetailImage>
+                            {book.image}
+                          </DetailImage>
+                        </div>
                       </div>
                     </div>
                   </ListItem>
+                  
                 )
                 )
               }
@@ -88,6 +92,7 @@ function MyList() {
         </Col>
 
       </Row>
+      
     </Container>
   );
 }
