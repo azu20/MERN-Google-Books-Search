@@ -85,12 +85,12 @@ function Books() {
         </h1>
       </Jumbotron>
       <div style={{ backgroundColor: "#E2B091" }}>
-        <form className="text-center" style={{ backgroundColor: "#E2B091" }}>
+        <form className="text-center" style={{ backgroundColor: "#F7DFD4" }}>
           <Input
             onChange={handleInputChange}
             name="title"
             placeholder="Title (required)"
-            style={{ backgroundColor: "#E2B091", fontSize: "28px", fontWeight: "bold" }}
+            style={{ backgroundColor: "#F7DFD4", fontSize: "28px", fontWeight: "bold" }}
           />
           <FormBtn
             disabled={!(formObject.title)}
@@ -99,12 +99,12 @@ function Books() {
           >
             Search Book
           </FormBtn>
-          <hr style={{ backgroundColor: "#E2B091" }}></hr>
-          <br style={{ backgroundColor: "#E2B091" }}></br>
+          <hr style={{ backgroundColor: "#F7DFD4" }}></hr>
+          <br style={{ backgroundColor: "#F7DFD4" }}></br>
         </form>
       </div>
-      <hr style={{ backgroundColor: "#E2B091" }}></hr>
-      <br style={{ backgroundColor: "#E2B091" }}></br>
+      <hr style={{ backgroundColor: "#F7DFD4" }}></hr>
+      <br style={{ backgroundColor: "#F7DFD4" }}></br>
       {books.length ? (
         <List>
           {

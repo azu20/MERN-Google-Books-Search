@@ -40,7 +40,7 @@ function MyList() {
     <Container fluid>
       <Row>
         <Col size="md-12">
-          <Jumbotron>
+          <Jumbotron style={{ textAlign: "center" }}>
             <h1>My Reading List</h1>
           </Jumbotron>
           <hr></hr>
@@ -50,28 +50,31 @@ function MyList() {
             <List>
               {
                 books.map(book => (
-                  <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
-                      <div className="card mb-3" >
-                        <div className="row no-gutters">
-                          <div className="col-md-4">
-                            <DetailImage>
-                              {book.image}
-                            </DetailImage>
-                          </div>
-                          <div className="col-md-8">
-                            <DetailBody>
-                              <h5> {book.title} </h5>
-                              <h6> {book.author} </h6>
-                              <p> {book.synopsis} </p>
-                            </DetailBody>
-                          </div>
+                  <ListItem key={book._id} style={{ backgroundColor: "#E2B091" }}>
+                    <div className="card mb-3" style={{ backgroundColor: "#E2B091" }}>
+                      <div className="row no-gutters" style={{ backgroundColor: "#E2B091" }}>
+                        <div className="col-md-4">
+                          <DetailImage>
+                            {book.image}
+                          </DetailImage>
+                        </div>
+                        <div className="col-md-8">
+                          <DetailBody>
+                            <h1> {book.title} </h1>
+                            <br></br>
+                            <h2> By: {book.author} </h2>
+                            <br></br>
+                            {/* <p> {book.synopsis} </p> */}
+                          </DetailBody>
+                          <Link to={"/books/" + book._id}>
+                          <h2 className="moreDeatils text-center">Click for more Book Details</h2>
+                        </Link>
+                        <br></br>
+                        <DeleteBtn onClick={() => deleteBook(book._id)} 
+                        style={{ backgroundColor: "#32485C", color: "white", fontWeight: "bold", fontSize: "28px", display: "flex", justifyContent: "center", alignItems: "center", margin: "auto"  }} 
+                       />
                         </div>
                       </div>
-                    
-                    </Link>
-                    <div>
-                    <DeleteBtn onClick={() => deleteBook(book._id)} />
                     </div>
                   </ListItem>
                 )
