@@ -6,7 +6,7 @@ https://api-search-books.herokuapp.com/
 
 
 
-![app screenshot](./client\public\MERN-Google-book-search-pic.PNG)
+![app screenshot](./client\public\MERN-Google-book-search-pic.png)
 
 
 ### Overview
