@@ -84,26 +84,27 @@ function Books() {
         <h1 style={{ fontSize: "72px" }} >What to read..<span role="img" aria-label="thinking-emoji">🤔</span>
         </h1>
       </Jumbotron>
-      <div>
-        <form className="text-center">
+      <div style={{ backgroundColor: "#E2B091" }}>
+        <form className="text-center" style={{ backgroundColor: "#E2B091" }}>
           <Input
             onChange={handleInputChange}
             name="title"
             placeholder="Title (required)"
-            style={{ fontSize: "28px", fontWeight: "bold" }}
+            style={{ backgroundColor: "#E2B091", fontSize: "28px", fontWeight: "bold" }}
           />
           <FormBtn
             disabled={!(formObject.title)}
             onClick={handleFormSubmit} 
+            
           >
             Search Book
           </FormBtn>
-          <hr></hr>
-          <br></br>
+          <hr style={{ backgroundColor: "#E2B091" }}></hr>
+          <br style={{ backgroundColor: "#E2B091" }}></br>
         </form>
       </div>
-      <hr></hr>
-      <br></br>
+      <hr style={{ backgroundColor: "#E2B091" }}></hr>
+      <br style={{ backgroundColor: "#E2B091" }}></br>
       {books.length ? (
         <List>
           {
@@ -111,7 +112,7 @@ function Books() {
 
               <ListItem key={book._id}>
                 <div className="card mb-6" >
-                  <div className="row no-gutters">
+                  <div className="row no-gutters" style={{ backgroundColor: "#E2B091" }}>
                     <div className="col-md-6 text-center" style={{ margin: "auto" }}>
                       <DetailBody>
                       <h1> {book.title} </h1>

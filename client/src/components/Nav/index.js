@@ -3,7 +3,7 @@ import React from "react";
 
 function Nav() {
   return (
-    <nav className="navbar navbar-expand-md navbar-dark bg-danger" style={{fontSize: "28px", margin: "auto"}}>
+    <nav className="navbar navbar-expand-md " style={{fontSize: "28px", margin: "auto", backgroundColor: "#EABCAC"}}>
       <a className="navbar-brand" href="/">
         Homepage
       </a>
