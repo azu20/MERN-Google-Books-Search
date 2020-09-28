@@ -4,10 +4,9 @@
 
 https://api-search-books.herokuapp.com/ 
 
+#### Website Image:
 
-
-![app image](/client/public/MERN-Google-book-search-pic.png)
-
+![app image](./MERN-Google-book-search-pic.png)
 
 
 ### Overview
